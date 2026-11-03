@@ -1,0 +1,22 @@
+body {
+    font-family: sans-serif;
+    color:  black;
+}
+
+header nav ul li a {
+    color: #1a56db;
+}
+
+aside nav ul li a {
+    color: #047857;
+}
+
+.comprar {
+    color: #ffffff;
+    background-color: #166534;
+}
+
+footer ul li a {
+    color: #b45309;
+}
+
