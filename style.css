@@ -1,6 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: sans-serif;
     color:  black;
+}
+
+header {
+    background-color: #dbeafe;
+    background-image: url("header-fondo.svg");
+    background-size: cover;
+    background-position: center;
+}
+
+main {
+    background-color: #f3f4f6;
+}
+
+aside {
+    background-color: #dcfce7;
+}
+
+article {
+    padding: 20px;
+    margin: 15px;
+    display: inline-block;
+}
+
+footer {
+    background-color: #e5e7eb;
 }
 
 header nav ul li a {
@@ -19,4 +48,3 @@ aside nav ul li a {
 footer ul li a {
     color: #b45309;
 }
-
