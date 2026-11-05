@@ -46,3 +46,28 @@ usa únicamente etiquetas y clases: no contiene selectores por ID ni usa
 Las tarjetas `<article>` tienen `padding: 20px` y `margin: 15px`. En DevTools,
 al seleccionar una tarjeta, el diagrama del modelo de caja debe mostrar esos
 valores como relleno interno y margen externo, respectivamente.
+
+## Hallazgos: Centralización de Identidad Visual y Espaciado
+
+La pseudoclase `:root` de `style.css` concentra estas variables globales:
+
+- **Colores:** `--color-primario` (`#166534`), `--color-secundario` (`#1a56db`),
+  `--color-fondo` (`#f3f4f6`), `--color-texto` (`#000000`),
+  `--color-fondo-encabezado` (`#dbeafe`), `--color-fondo-lateral` (`#dcfce7`),
+  `--color-fondo-pie` (`#e5e7eb`), `--color-enlace-lateral` (`#047857`),
+  `--color-enlace-pie` (`#b45309`) y `--color-texto-inverso` (`#ffffff`).
+- **Tipografía:** `--fuente-principal` usa Nunito Sans, cargada desde Google Fonts.
+- **Espaciado:** `--espaciado-pequeno` (8 px), `--espaciado-medio` (16 px),
+  `--espaciado-grande` (24 px), `--espaciado-tarjeta` (20 px) y
+  `--espaciado-entre-tarjetas` (15 px).
+
+Reutilizar tokens de espaciado hace que las tarjetas mantengan medidas
+coherentes y permite ajustar el aire de varias reglas desde un solo lugar, en
+vez de acumular valores independientes difíciles de armonizar. Los tokens
+específicos de tarjeta conservan las dimensiones que ya tenía el catálogo.
+
+Al centralizar colores, tipografía y medidas en `:root`, cada componente toma
+sus valores de una fuente común. Así, los cambios de identidad visual se
+aplican de forma consistente y se reduce el riesgo de que reglas nuevas
+introduzcan colores o separaciones incompatibles a medida que crece la hoja de
+estilos.

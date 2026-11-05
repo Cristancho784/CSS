@@ -1,50 +1,69 @@
+:root {
+    --color-primario: #0fa348;
+    --color-secundario: #18449b;
+    --color-fondo: #f3f4f6;
+    --color-texto: #000000;
+    --color-fondo-encabezado: #dbeafe;
+    --color-fondo-lateral: #dcfce7;
+    --color-fondo-pie: #e5e7eb;
+    --color-enlace-lateral: #047857;
+    --color-enlace-pie: #b45309;
+    --color-texto-inverso: #ffffff;
+    --fuente-principal: "N   unito Sans", sans-serif;
+    --espaciado-pequeno: 8px;
+    --espaciado-medio: 16px;
+    --espaciado-grande: 24px;
+    --espaciado-tarjeta: 20px;
+    --espaciado-entre-tarjetas: 15px;
+}    
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: sans-serif;
-    color:  black;
+    font-family: var(--fuente-principal);
+    color: var(--color-texto);
 }
 
 header {
-    background-color: #dbeafe;
+    background-color: var(--color-fondo-encabezado);
     background-image: url("header-fondo.svg");
     background-size: cover;
     background-position: center;
 }
 
 main {
-    background-color: #f3f4f6;
+    background-color: var(--color-fondo);
 }
 
 aside {
-    background-color: #dcfce7;
+    background-color: var(--color-fondo-lateral);
 }
 
 article {
-    padding: 20px;
-    margin: 15px;
+    padding: var(--espaciado-tarjeta);
+    margin: var(--espaciado-entre-tarjetas);
     display: inline-block;
 }
 
 footer {
-    background-color: #e5e7eb;
+    background-color: var(--color-fondo-pie);
 }
 
 header nav ul li a {
-    color: #1a56db;
+    color: var(--color-secundario);
 }
 
 aside nav ul li a {
-    color: #047857;
+    color: var(--color-enlace-lateral);
 }
 
 .comprar {
-    color: #ffffff;
-    background-color: #166534;
+    color: var(--color-texto-inverso);
+    background-color: var(--color-primario);
 }
 
 footer ul li a {
-    color: #b45309;
+    color: var(--color-enlace-pie);
 }
