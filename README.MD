@@ -71,3 +71,32 @@ sus valores de una fuente común. Así, los cambios de identidad visual se
 aplican de forma consistente y se reduce el riesgo de que reglas nuevas
 introduzcan colores o separaciones incompatibles a medida que crece la hoja de
 estilos.
+
+## Hallazgos: Pseudoclases y Pseudoelementos
+
+Las pseudoclases describen estados o relaciones dinámicas de los elementos. Por
+ejemplo, `:hover` responde a que el cursor pase sobre un enlace o botón,
+`:active` identifica el momento de presión y `:focus` señala que un elemento
+recibió el foco del teclado. En cambio, los pseudoelementos crean una pieza
+virtual vinculada al elemento seleccionado: `::before` se inserta antes de su
+contenido y `::after` después, sin modificar el HTML real.
+
+La pseudoclase `:focus` es esencial para la accesibilidad. En los enlaces del
+menú lateral y en los botones se muestra un contorno visible construido con la
+variable `--color-secundario`. De esta manera, una persona que navega con Tab
+puede reconocer exactamente qué control está activo, incluso sin usar el
+cursor. El estilo incluye `outline-offset` para separar el contorno del enlace
+sin depender del contorno predeterminado del navegador.
+
+Los elementos decorativos deben inyectarse desde CSS cuando forman parte de la
+presentación y no aportan contenido independiente ni acciones. Colocar `•` con
+`::before` y la insignia `¡Oferta!` con `::after` mantiene el HTML limpio, evita
+etiquetas vacías o repetidas y permite cambiar todos los detalles visuales desde
+la hoja de estilos. Los colores y medidas de estas insignias provienen de las
+variables de `:root`, por lo que conservan la identidad visual del catálogo.
+
+Para auditar los estados se pueden seleccionar las tarjetas o los enlaces del
+aside en DevTools, activar `:hov` para simular `:hover`, `:active` o `:focus`, y
+revisar el panel de Estilos. Allí se puede comprobar que `::before` aporta el
+indicador de categoría y que `::after` genera la etiqueta `¡Oferta!` dentro del
+árbol virtual sin existir como elemento HTML adicional.
