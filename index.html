@@ -8,82 +8,82 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <a href="index.html">Tienda en línea</a>
-        <nav aria-label="Navegación principal">
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Categorías</a></li>
-                <li><a href="#">Contacto</a></li>
+    <header class="site-header">
+        <a class="site-header__brand" href="index.html">Tienda en línea</a>
+        <nav class="site-header__nav" aria-label="Navegación principal">
+            <ul class="site-header__list">
+                <li class="site-header__item"><a class="site-header__link" href="index.html">Inicio</a></li>
+                <li class="site-header__item"><a class="site-header__link" href="#">Productos</a></li>
+                <li class="site-header__item"><a class="site-header__link" href="#">Categorías</a></li>
+                <li class="site-header__item"><a class="site-header__link" href="#">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section>
-            <h1>Nuestros productos</h1>
-            <p>Encuentra artículos seleccionados para tu día a día.</p>
-                    <aside>
-                        <h2>Ofertas especiales</h2>
-                        <p>¡Aprovecha nuestras ofertas por tiempo limitado!</p>
+        <section class="catalog">
+            <h1 class="catalog__title">Nuestros productos</h1>
+            <p class="catalog__intro">Encuentra artículos seleccionados para tu día a día.</p>
+                    <aside class="offer">
+                        <h2 class="offer__title">Ofertas especiales</h2>
+                        <p class="offer__text">¡Aprovecha nuestras ofertas por tiempo limitado!</p>
                     </aside>
-            <div>
-                <article>
-                    <h2>Audífonos inalámbricos</h2>
-                    <p>Disfruta un sonido nítido y cómodo con conexión Bluetooth y batería de larga duración.</p>
-                    <p><strong>Precio:</strong> $129.900 COP</p>
-                    <img src="descarga.jfif" alt="Audífonos inalámbricos" width="200">
+            <div class="catalog__products">
+                <article class="card card--destacada">
+                    <h2 class="card__title">Audífonos inalámbricos</h2>
+                    <p class="card__description">Disfruta un sonido nítido y cómodo con conexión Bluetooth y batería de larga duración.</p>
+                    <p class="card__price"><strong>Precio:</strong> $129.900 COP</p>
+                    <img class="card__image" src="descarga.jfif" alt="Audífonos inalámbricos" width="200">
                     
-                    <a href="#" class="btn comprar" id="btn-destacado">Comprar audífonos</a>
+                    <a href="#" class="btn btn--destacado">Comprar audífonos</a>
                 </article>
 
-                <article>
-                    <h2>Lámpara de escritorio</h2>
-                    <p>Ilumina tu espacio de trabajo con una lámpara LED ajustable y de bajo consumo.</p>
-                    <p><strong>Precio:</strong> $89.900 COP</p>
-                    <img src="descarga.jfif" alt="Audífonos inalámbricos" width="200">
-                    <a href="#" class="btn comprar">Comprar lámpara</a>
+                <article class="card">
+                    <h2 class="card__title">Lámpara de escritorio</h2>
+                    <p class="card__description">Ilumina tu espacio de trabajo con una lámpara LED ajustable y de bajo consumo.</p>
+                    <p class="card__price"><strong>Precio:</strong> $89.900 COP</p>
+                    <img class="card__image" src="descarga.jfif" alt="Lámpara de escritorio" width="200">
+                    <a href="#" class="btn btn--secundario">Comprar lámpara</a>
                 </article>
 
-                <article>
-                    <h2>Morral urbano</h2>
-                    <p>Lleva tus pertenencias con comodidad en este morral resistente, práctico y liviano.</p>
-                    <p><strong>Precio:</strong> $159.900 COP</p>
-                    <img src="descarga.jfif" alt="Audífonos inalámbricos" width="200">
-                    <a href="#" class="btn comprar">Comprar morral</a>
+                <article class="card">
+                    <h2 class="card__title">Morral urbano</h2>
+                    <p class="card__description">Lleva tus pertenencias con comodidad en este morral resistente, práctico y liviano.</p>
+                    <p class="card__price"><strong>Precio:</strong> $159.900 COP</p>
+                    <img class="card__image" src="descarga.jfif" alt="Morral urbano" width="200">
+                    <a href="#" class="btn btn--secundario">Comprar morral</a>
                 </article>
 
-                <article>
-                    <h2>Botella reutilizable</h2>
-                    <p>Mantén tus bebidas a la temperatura ideal con esta botella térmica de acero inoxidable.</p>
-                    <p><strong>Precio:</strong> $49.900 COP</p>
-                    <img src="descarga.jfif" alt="Audífonos inalámbricos" width="200">
-                    <a href="#" class="btn comprar">Comprar botella</a>
+                <article class="card">
+                    <h2 class="card__title">Botella reutilizable</h2>
+                    <p class="card__description">Mantén tus bebidas a la temperatura ideal con esta botella térmica de acero inoxidable.</p>
+                    <p class="card__price"><strong>Precio:</strong> $49.900 COP</p>
+                    <img class="card__image" src="descarga.jfif" alt="Botella reutilizable" width="200">
+                    <a href="#" class="btn btn--secundario">Comprar botella</a>
                 </article>
             </div>
         </section>
 
-        <aside>
-            <h2>Filtrar por categoría</h2>
-            <nav aria-label="Categorías de productos">
-                <ul>
-                    <li><a href="#">Tecnología</a></li>
-                    <li><a href="#">Hogar</a></li>
-                    <li><a href="#">Accesorios</a></li>
-                    <li><a href="#">Cocina</a></li>
+        <aside class="category-filter">
+            <h2 class="category-filter__title">Filtrar por categoría</h2>
+            <nav class="category-filter__nav" aria-label="Categorías de productos">
+                <ul class="category-filter__list">
+                    <li class="category-filter__item"><a class="category-filter__link" href="#">Tecnología</a></li>
+                    <li class="category-filter__item"><a class="category-filter__link" href="#">Hogar</a></li>
+                    <li class="category-filter__item"><a class="category-filter__link" href="#">Accesorios</a></li>
+                    <li class="category-filter__item"><a class="category-filter__link" href="#">Cocina</a></li>
                 </ul>
             </nav>
         </aside>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Tienda en línea. Todos los derechos reservados.</p>
-        <nav aria-label="Redes sociales">
-            <ul>
-                <li><a href="https://www.facebook.com/">Facebook</a></li>
-                <li><a href="https://www.instagram.com/">Instagram</a></li>
-                <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
+    <footer class="site-footer">
+        <p class="site-footer__copyright">&copy; 2026 Tienda en línea. Todos los derechos reservados.</p>
+        <nav class="site-footer__nav" aria-label="Redes sociales">
+            <ul class="site-footer__list">
+                <li class="site-footer__item"><a class="site-footer__link" href="https://www.facebook.com/">Facebook</a></li>
+                <li class="site-footer__item"><a class="site-footer__link" href="https://www.instagram.com/">Instagram</a></li>
+                <li class="site-footer__item"><a class="site-footer__link" href="https://www.linkedin.com/">LinkedIn</a></li>
             </ul>
         </nav>
     </footer>
