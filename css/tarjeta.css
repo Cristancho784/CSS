@@ -1,0 +1,28 @@
+.card {
+    position: relative;
+    padding: var(--espaciado-tarjeta);
+    margin: var(--espaciado-entre-tarjetas);
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+}
+
+.card__title::after {
+    content: "¡Oferta!";
+    display: inline-block;
+    margin-left: var(--espaciado-pequeno);
+    padding: var(--relleno-insignia-vertical) var(--espaciado-pequeno);
+    color: var(--color-texto-inverso);
+    background-color: var(--color-secundario);
+    border-radius: var(--radio-insignia);
+    font-size: var(--tamano-insignia);
+    vertical-align: middle;
+}
+
+.card:hover {
+    background-color: var(--color-hover-secundario);
+    color: var(--color-texto-inverso);
+    background-image: url("../header-fondo.svg");
+    background-size: cover;
+    background-position: center;
+}

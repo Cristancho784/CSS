@@ -17,7 +17,17 @@
     --espaciado-grande: 24px;
     --espaciado-tarjeta: 20px;
     --espaciado-entre-tarjetas: 15px;
-}    
+    --radio-boton: 4px;
+    --radio-insignia: 999px;
+    --tamano-insignia: 0.75rem;
+    --relleno-insignia-vertical: 2px;
+}   
+
+@import url('css/tarjeta.css');
+@import url('css/botones.css');
+@import url('css/menu-lateral.css');
+
+
 
 * {
     box-sizing: border-box;
@@ -43,21 +53,11 @@ aside {
     background-color: var(--color-fondo-lateral);
 }
 
-article {
-    padding: var(--espaciado-tarjeta);
-    margin: var(--espaciado-entre-tarjetas);
-    display: inline-block;
-    
-    background-size: cover;
-    background-position: center;
-    
-}
-
 footer {
     background-color: var(--color-fondo-pie);
 }
 
-header nav ul li a {
+.site-header__link {
     color: var(--color-secundario);
 }
 
@@ -65,96 +65,12 @@ aside nav ul li a {
     color: var(--color-enlace-lateral);
 }
 
-.comprar {
-    color: var(--color-texto-inverso);
-    background-color: var(--color-primario);
-}
-
-footer ul li a {
+.site-footer__link {
     color: var(--color-enlace-pie);
 }
 
 /* Estados interactivos generales */
-header nav ul li a:hover,
-header nav ul li a:focus {
+.site-header__link:hover,
+.site-header__link:focus {
     color: var(--color-hover-secundario);
-}
-
-/* Estados interactivos del menú lateral */
-aside nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-aside nav ul li a {
-    display: block;
-    padding: var(--espaciado-pequeno) var(--espaciado-medio);
-    margin-bottom: var(--espaciado-pequeno);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.25s ease, color 0.25s ease;
-}
-
-aside nav ul li a::before {
-    content: "• ";
-    color: var(--color-secundario);
-}
-
-aside nav ul li a:hover {
-    color: var(--color-texto-inverso);
-    background-color: var(--color-secundario);
-}
-
-aside nav ul li a:focus {
-    outline: 3px solid var(--color-secundario);
-    outline-offset: 3px;
-}
-
-/* Retroalimentación táctil de los botones */
-.comprar {
-    display: inline-block;
-    padding: var(--espaciado-pequeno) var(--espaciado-medio);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.25s ease, transform 0.1s ease;
-}
-
-.comprar:hover {
-    background-color: var(--color-secundario);
-}
-
-.comprar:active {
-    transform: translateY(3px);
-    filter: brightness(0.85);
-}
-
-.comprar:focus {
-    outline: 3px solid var(--color-secundario);
-    outline-offset: 3px;
-}
-
-/* Insignia decorativa en las tarjetas */
-article {
-    position: relative;
-    
-}
-
-article h2::after {
-    content: "¡Oferta!";
-    display: inline-block;
-    margin-left: var(--espaciado-pequeno);
-    padding: 2px var(--espaciado-pequeno);
-    color: var(--color-texto-inverso);
-    background-color: var(--color-secundario);
-    border-radius: 999px;
-    font-size: 0.75rem;
-    vertical-align: middle;
-}
-
-article:hover  {
-    background-color: var(--color-hover-secundario);
-    color: var(--color-texto-inverso);
-    background-image: url("header-fondo.svg");
-    background-size: cover;
-    background-position: center;
 }
