@@ -1,15 +1,17 @@
 .btn {
-    color: var(--color-texto-inverso);
+    color: var(--color-texto-boton);
     background-color: var(--color-primario);
     display: inline-block;
-    padding: var(--espaciado-pequeno) var(--espaciado-medio);
+    padding: var(--espaciado-boton-vertical);
     text-decoration: none;
     border-radius: var(--radio-boton);
     transition: background-color 0.25s ease, transform 0.1s ease;
+    margin: var(--espaciado-boton-horizontal); ;
 }
 
+
 .btn:hover {
-    background-color: var(--color-secundario);
+    background-color: var(--color-hover-boton);
 }
 
 .btn:active {
@@ -18,6 +20,6 @@
 }
 
 .btn:focus {
-    outline: 3px solid var(--color-secundario);
+    outline: 3px solid var(--color-focus-boton);
     outline-offset: 3px;
 }

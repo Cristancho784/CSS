@@ -1,0 +1,18 @@
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espaciado-header-gap);
+    padding: var(--espaciado-header-padding-vertical) var(--espaciado-header-padding-horizontal);
+}
+
+.site-header__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espaciado-header-nav);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

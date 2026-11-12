@@ -43,26 +43,20 @@ La hoja de estilos no contiene selectores por ID ni usa `!important`.
   entre las tarjetas y pueden empujarlas más lejos unas de otras, haciendo que
   ocupen más espacio y que la distribución cambie.
 
-Las tarjetas `.card` tienen `padding: 20px` y `margin: 15px`. En DevTools, al
-seleccionar una tarjeta, el diagrama del modelo de caja debe mostrar esos
-valores como relleno interno y margen externo, respectivamente.
+Las tarjetas `.card` usan `padding: var(--espaciado-tarjeta)` y no agregan
+márgenes propios; la separación entre ellas se controla en la cuadrícula con
+`column-gap` y `row-gap`. Así, los espacios no se duplican entre los márgenes
+de las tarjetas y los espacios de la cuadrícula.
 
 ## Hallazgos: Centralización de Identidad Visual y Espaciado
 
-La pseudoclase `:root` de `style.css` concentra estas variables globales:
-
-- **Colores:** `--color-primario` (`#166534`), `--color-secundario` (`#1a56db`),
-  `--color-fondo` (`#f3f4f6`), `--color-texto` (`#000000`),
-  `--color-fondo-encabezado` (`#dbeafe`), `--color-fondo-lateral` (`#dcfce7`),
-  `--color-fondo-pie` (`#e5e7eb`), `--color-enlace-lateral` (`#047857`),
-  `--color-enlace-pie` (`#b45309`) y `--color-texto-inverso` (`#ffffff`).
-- **Tipografía:** `--fuente-principal` usa Nunito Sans, cargada desde Google Fonts.
-- **Espaciado:** `--espaciado-pequeno` (8 px), `--espaciado-medio` (16 px),
-  `--espaciado-grande` (24 px), `--espaciado-tarjeta` (20 px) y
-  `--espaciado-entre-tarjetas` (15 px).
-- **Detalles de componentes:** `--radio-boton` (4 px), `--radio-insignia`
-  (999 px), `--tamano-insignia` (0.75 rem) y
-  `--relleno-insignia-vertical` (2 px).
+La pseudoclase `:root` de `style.css` centraliza colores, tipografía y medidas
+de componentes. Los tokens de color y espaciado se nombran por zona o función,
+por ejemplo `--color-hover-boton`, `--color-focus-lateral`,
+`--espaciado-header-nav` y `--espaciado-filtro-gap`. Así se pueden ajustar de
+forma independiente sin modificar estilos no relacionados. También se
+mantienen tokens de tipografía como `--fuente-principal` y de detalles como
+`--radio-boton`, `--radio-insignia` y `--tamano-insignia`.
 
 Reutilizar tokens de espaciado hace que las tarjetas mantengan medidas
 coherentes y permite ajustar el aire de varias reglas desde un solo lugar, en
@@ -85,8 +79,9 @@ virtual vinculada al elemento seleccionado: `::before` se inserta antes de su
 contenido y `::after` después, sin modificar el HTML real.
 
 La pseudoclase `:focus` es esencial para la accesibilidad. En los enlaces del
-menú lateral y en los botones se muestra un contorno visible construido con la
-variable `--color-secundario`. De esta manera, una persona que navega con Tab
+menú lateral y en los botones se muestra un contorno visible construido con sus
+tokens independientes `--color-focus-lateral` y `--color-focus-boton`. De esta
+manera, una persona que navega con Tab
 puede reconocer exactamente qué control está activo, incluso sin usar el
 cursor. El estilo incluye `outline-offset` para separar el contorno del enlace
 sin depender del contorno predeterminado del navegador.
@@ -113,12 +108,12 @@ variación con dos guiones medios: `.card`, `.card__title` y
 por ejemplo `class="btn btn--secundario"`, para identificar una variante sin
 introducir nombres genéricos.
 
-La hoja maestra importa módulos por componente: `css/tarjeta.css`,
-`css/botones.css` y `css/menu-lateral.css`. Así, quienes trabajan en tarjetas,
-botones o navegación lateral pueden localizar y modificar sus reglas con menos
-interferencia entre sí. `style.css` conserva los tokens compartidos de `:root`
-y el contexto global, mientras los módulos reutilizan esas variables para
-colores y espaciados coherentes.
+La hoja maestra importa módulos por componente como `css/tarjeta.css`,
+`css/botones.css`, `css/menu-lateral.css`, `css/header.css`, `css/aside.css` y
+`css/footer.css`. Así, quienes trabajan en cada zona pueden localizar y
+modificar sus reglas con menos interferencia entre sí. `style.css` conserva los
+tokens de `:root` y el contexto global, mientras los módulos reutilizan las
+variables específicas de cada componente.
 
 Los selectores BEM planos como `.card` y `.btn` tienen una especificidad de una
 clase (10 puntos en la escala simplificada de esta guía). Evitar cadenas como
@@ -127,3 +122,29 @@ sobrescribir reglas, lo que ayuda a prevenir conflictos de cascada. Los estados
 como `:hover` y los pseudoelementos como `::after` añaden su propia
 especificidad; por eso conviene mantenerlos asociados a una clase BEM concreta
 y evitar anidamientos innecesarios.
+
+## Hallazgos: Arquitectura Total con Flexbox
+
+1. **El pie de página y la altura de la ventana:** `.app-layout` usa
+   `display: flex`, `flex-direction: column` y `min-height: 100vh`. Esto crea
+   una columna que como mínimo ocupa toda la altura visible. Como `main` usa
+   `flex: 1`, toma el espacio vertical libre y mantiene el pie al fondo cuando
+   hay poco contenido; si el contenido crece, la página puede crecer con él.
+
+2. **Separación consistente en la navegación:** las listas de navegación del
+   encabezado y del pie usan Flexbox con `gap` y reinician sus márgenes. En vez
+   de añadir márgenes a cada enlace y acumularlos en los extremos, `gap`
+   controla directamente la distancia entre elementos. Los tokens
+   `--espaciado-header-nav` y `--espaciado-footer-nav` permiten ajustar cada
+   navegación por separado, y `flex-wrap` deja que los enlaces pasen a otra
+   línea si falta espacio.
+
+3. **Tarjetas resistentes a textos de distinta longitud:** BEM distingue el
+   bloque `.card` de elementos como `.card__description` y
+   `.card__price-wrapper`. La tarjeta es una columna flex; la descripción usa
+   `flex-grow: 1` para absorber el espacio libre, mientras el botón queda al
+   fondo. La cuadrícula usa filas de igual fracción y la tarjeta ocupa la
+   altura de su celda, de modo que las tarjetas mantienen dimensiones
+   uniformes. El área de precios alinea la oferta y el precio original con
+   Flexbox, y las Custom Properties permiten ajustar rellenos y separaciones
+   por componente sin propagar cambios a otras zonas.

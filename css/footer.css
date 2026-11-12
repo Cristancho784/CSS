@@ -1,0 +1,22 @@
+.site-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espaciado-footer-gap);
+    padding: var(--espaciado-footer-padding-vertical) var(--espaciado-footer-padding-horizontal);
+}
+
+.site-footer__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espaciado-footer-nav);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-footer__copyright {
+    margin: 0;
+}

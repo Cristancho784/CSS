@@ -1,41 +1,102 @@
+
+@import url('css/tarjeta.css');
+@import url('css/botones.css');
+@import url('css/menu-lateral.css');
+@import url('css/header.css');
+@import url('css/aside.css');
+@import url('css/footer.css');
+
 :root {
     --color-primario: #0fa348;
-    --color-secundario: #fb0c4b;
     --color-fondo: #f3f4f6;
     --color-texto: #000000;
+
     --color-fondo-encabezado: #dbeafe;
-    --color-fondo-lateral: #dcfce7;
+    --color-fondo-oferta: #dcfce7;
+    --color-fondo-filtro: #dcfce7;
     --color-fondo-pie: #e5e7eb;
-    --color-enlace-lateral: #047857;
+
+    --color-enlace-lateral: #cf5435;
     --color-enlace-pie: #b45309;
-    --color-texto-inverso: #010101;
-    --color-hover-secundario: #0b5ed7;
-    --color-etiqueta: #fff3cd;
+    --color-enlace-encabezado: #fb0c4b;
+    --color-hover-enlace-encabezado: #0b5ed7;
+
+    --color-texto-boton: #010101;
+    --color-hover-boton: #fb0c4b;
+    --color-focus-boton: #fb0c4b;
+
+    --color-indicador-lateral: #fb0c4b;
+    --color-hover-fondo-lateral: #fb0c4b;
+    --color-hover-texto-lateral: #010101;
+    --color-focus-lateral: #fb0c4b;
+
+    --color-texto-insignia: #010101;
+    --color-fondo-insignia: #fb0c4b;
+
+    --color-hover-fondo-tarjeta: #0b5ed7;
+    --color-hover-texto-tarjeta: #010101;
+
     --fuente-principal: "Nunito Sans", sans-serif;
-    --espaciado-pequeno: 8px;
-    --espaciado-medio: 16px;
-    --espaciado-grande: 24px;
+
+    --espaciado-header-gap: 16px;
+    --espaciado-header-padding-vertical: 16px;
+    --espaciado-header-padding-horizontal: 24px;
+    --espaciado-header-nav: 16px;
+
+    --espaciado-main-wrapper-padding: 10px;
+    --espaciado-main-wrapper-gap: 50px;
+    --espaciado-productos-gap: 40px;
+    --espaciado-filtro-padding: 20px;
+    --espaciado-filtro-gap: 24px;
+    --espaciado-precio-gap: 8px;
+
+    --espaciado-footer-gap: 16px;
+    --espaciado-footer-padding-vertical: 30px;
+    --espaciado-footer-padding-horizontal: 30px;
+    --espaciado-footer-nav: 20px;
+
+    --espaciado-boton-vertical: 10px;
+    --espaciado-boton-horizontal: 10px;
+
+    --espaciado-menu-vertical: 50px;
+    --espaciado-menu-horizontal: 25px;
+    --espaciado-menu-inferior: 10px;
+
     --espaciado-tarjeta: 20px;
     --espaciado-entre-tarjetas: 15px;
+
+    --espaciado-insignia-separacion: 10px;
+    --espaciado-insignia-horizontal: 10px;
+
     --radio-boton: 4px;
     --radio-insignia: 999px;
     --tamano-insignia: 0.75rem;
     --relleno-insignia-vertical: 2px;
 }   
 
-@import url('css/tarjeta.css');
-@import url('css/botones.css');
-@import url('css/menu-lateral.css');
-
 
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body {
+
+html,body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     font-family: var(--fuente-principal);
     color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -46,11 +107,38 @@ header {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     background-color: var(--color-fondo);
 }
 
-aside {
-    background-color: var(--color-fondo-lateral);
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    gap: var(--espaciado-main-wrapper-gap);
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: var(--espaciado-main-wrapper-padding) 0;
+}
+
+.catalog {
+    flex: 1;
+    min-width: 0;
+}
+
+.catalog__products {
+    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--espaciado-productos-gap);
+    row-gap: var(--espaciado-entre-tarjetas);
+}
+
+.offer {
+    background-color: var(--color-fondo-oferta);
 }
 
 footer {
@@ -58,7 +146,7 @@ footer {
 }
 
 .site-header__link {
-    color: var(--color-secundario);
+    color: var(--color-enlace-encabezado);
 }
 
 aside nav ul li a {
@@ -72,5 +160,7 @@ aside nav ul li a {
 /* Estados interactivos generales */
 .site-header__link:hover,
 .site-header__link:focus {
-    color: var(--color-hover-secundario);
+    color: var(--color-hover-enlace-encabezado);
 }
+
+

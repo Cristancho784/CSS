@@ -1,0 +1,8 @@
+.category-filter {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-filtro-gap);
+    flex: 0 0 240px;
+    padding: var(--espaciado-filtro-padding);
+    background-color: var(--color-fondo-filtro);
+}

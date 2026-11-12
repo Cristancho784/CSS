@@ -1,28 +1,59 @@
 .card {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: var(--espaciado-tarjeta);
-    margin: var(--espaciado-entre-tarjetas);
-    display: inline-block;
+    min-width: 0;
+    margin: 0;
     background-size: cover;
     background-position: center;
+}
+
+.card__image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.card__description {
+    flex-grow: 1;
+}
+
+.card__price-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--espaciado-precio-gap);
+}
+
+.card__price {
+    margin: 0;
+    font-size: 1.125rem;
+}
+
+.card__price-original {
+    font-size: 0.875rem;
 }
 
 .card__title::after {
     content: "¡Oferta!";
     display: inline-block;
-    margin-left: var(--espaciado-pequeno);
-    padding: var(--relleno-insignia-vertical) var(--espaciado-pequeno);
-    color: var(--color-texto-inverso);
-    background-color: var(--color-secundario);
+    margin-left: var(--espaciado-insignia-separacion);
+    padding: var(--relleno-insignia-vertical) var(--espaciado-insignia-horizontal);
+    color: var(--color-texto-insignia);
+    background-color: var(--color-fondo-insignia);
     border-radius: var(--radio-insignia);
     font-size: var(--tamano-insignia);
     vertical-align: middle;
 }
 
 .card:hover {
-    background-color: var(--color-hover-secundario);
-    color: var(--color-texto-inverso);
+    background-color: var(--color-hover-fondo-tarjeta);
+    color: var(--color-hover-texto-tarjeta);
     background-image: url("../header-fondo.svg");
     background-size: cover;
     background-position: center;
 }
+
