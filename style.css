@@ -1,3 +1,7 @@
+@import url('css/tarjeta.css');
+@import url('css/botones.css');
+@import url('css/menu-lateral.css');
+
 :root {
     --color-primario: #0fa348;
     --color-secundario: #fb0c4b;
@@ -23,9 +27,6 @@
     --relleno-insignia-vertical: 2px;
 }   
 
-@import url('css/tarjeta.css');
-@import url('css/botones.css');
-@import url('css/menu-lateral.css');
 
 
 
